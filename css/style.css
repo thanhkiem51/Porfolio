@@ -9,14 +9,15 @@
 	height: 100%;
 	top:0;
 	left: 0;
-	z-index: 0;
+	z-index: -1;
+    background:black;
 }
 
-.background-slideshow:after {
+/*.background-slideshow:after {
 	content: '';
-	background: transparent url(../images/static.jpg) repeat top left;
 	opacity: 0.5;
-}
+    background: transparent url(../images/static.jpg) repeat top left;
+}*/
 
 .background-slideshow li {
     width: 100%;
@@ -30,20 +31,19 @@
     background-position: 50% 50%;
     opacity: 0;
     z-index: 0;
-    animation-name: garden; 
+    animation-name: bgslide; 
     animation-duration: 20s;
     animation-iteration-count: infinite; 
     animation-timing-function: linear;
     animation-delay: 0s;
 }
 
-@keyframes garden {
-    0% { opacity: 0;  }
-    8% { opacity: 1;  }
-    23% { opacity: 1; animation-timing-function: ease-out; }
-    25% { opacity: 0 }
+@keyframes bgslide {
+    0% { opacity: 0;}
+    12.5% { opacity: 0.5; animation-timing-function: ease-out; }
+    25% { opacity: 0.5 }
+    37.5% { opacity: 0 }
     100% { opacity: 0 }
-
 }
 /*animation-timing-function: ease-out; */
 
