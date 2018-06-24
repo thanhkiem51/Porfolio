@@ -8,7 +8,7 @@ a {
 }
 
 a:link, a:visited { 
-    color:darkgreen;
+    color: white;
 }
 
 /*fonts style*/
@@ -142,6 +142,20 @@ p {
         line-height: 40px;
         padding-left: 20px;
         /*display:none;*/
-        background: red;
+    }
+    #nav-bar a:nth-child(1) {
+        background: url(../images/nav-button-bg1.jpg) repeat top left ;
+    }
+    #nav-bar a:nth-child(2) {
+        background: url(../images/nav-button-bg2.jpg) repeat top left ;
+    }
+    #nav-bar a:nth-child(3) {
+        background: url(../images/nav-button-bg3.jpg) repeat top left ;
+    }
+    #nav-bar a:nth-child(4) {
+        background: url(../images/nav-button-bg4.jpg) repeat top left ;
+    }
+    #nav-bar a:nth-child(1),#nav-bar a:nth-child(2),#nav-bar a:nth-child(3),#nav-bar a:nth-child(4) {
+        /*display:none;*/
     }
 }

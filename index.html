@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="contentApp">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
@@ -30,12 +30,8 @@
 		<a href="#">Contact</a>
 	</div>
 	<div id="main">  <!-- main content go here -->
-		<div class="head-line">
-			<h1 class="hvr-pulse">Welcome to my basement</h1>
-			<h3>I hope these will satisfy you</h3>
-		</div>
-
-
+		<div ng-bind="content"></div>
+		
 	</div>
 </body>
 </html>
