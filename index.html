@@ -4,39 +4,40 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>Nam's Basement</title>
-	<!-- internal library -->
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/animation.css">
-	<link rel="stylesheet" href="css/hover.css">
-
-	<!-- external frameworks/library -->
-	<script src="js/script.js"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script> -->
-	<script src="js/angular.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 	<!-- google fonts goes here -->
 	<link href="https://fonts.googleapis.com/css?family=Cinzel|Condiment|Playfair+Display+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- external frameworks + independence library-->
+	<script src="js/angular.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script> -->
+
+	<!-- internal library + dependence library-->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animation.css">
+	<link rel="stylesheet" href="css/hover.css">
+	<script src="js/script.js"></script>
 
 </head>
 <body>
 	<div class="background-slideshow"> <!-- Background animation -->
 		<ul><li></li><li></li><li></li><li></li></ul>
 	</div>
-	<div id="nav-bar">
+	<div id="nav-bar" class="nav-bar">
 		<div id="burger">
 			<i class="fa fa-bars"></i>
 		</div>
-		<a href="#">Home</a>
-		<a href="#">About</a>
-		<a href="#">Projects</a>
-		<a href="#">Contact</a>
+		<span>Home</span>
+		<span>About</span>
+		<span>Projects</span>
+		<span>Contact</span>
 
 	</div>
 	<div id="main">  <!-- main content go here -->
 		<div ng-bind="content"></div>
-		
 	</div>
 </body>
 </html>
