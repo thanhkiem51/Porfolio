@@ -9,8 +9,13 @@ $(document).ready(function() {
 
 });
 
+var contentApp = angular.module('contentApp', ["ngRoute"]);
+contentApp.config(function($routeProvider) {
+	routeProvider
+	.when("/", {templateUrl: "home.html"})
+});
+contentApp.controller('mainController', function($scope) {
 
-// var contentApp = angular.module('contentApp', []);
-
+});
 
 

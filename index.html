@@ -4,16 +4,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>Nam's Basement</title>
-
+	<link rel="shortcut icon" href="images/static.png">
 	<!-- google fonts goes here -->
 	<link href="https://fonts.googleapis.com/css?family=Cinzel|Condiment|Playfair+Display+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- external frameworks + independence library-->
-	<script src="js/angular.js"></script>
+	<!-- <script src="js/angular.js"></script> -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 	<!-- internal library + dependence library-->
 	<link rel="stylesheet" href="css/style.css">
@@ -33,11 +33,11 @@
 		<span>Home</span>
 		<span>About</span>
 		<span>Projects</span>
-		<span>Contact</span>
+<!-- 		<span>Contact</span> -->
 
 	</div>
-	<div id="main">  <!-- main content go here -->
-		<div ng-bind="content"></div>
+	<div id="main" ng-controller="mainController">  <!-- main content go here -->
+		<div ng-view></div>
 	</div>
 </body>
 </html>
