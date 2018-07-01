@@ -9,6 +9,7 @@ app.use('/', express.static('public'));
 //     res.sendFile(path('/index.html'));
 // });
 
+app.listen(8080);
 // 'use strict';
 // var express = require('express'),
 //   bodyParser = require('body-parser'),
