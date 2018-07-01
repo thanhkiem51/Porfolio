@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "Nam Nguyen Porfolio",
   "homepage": "https://namwin.herokuapp.com/",
-  "main": "src/app.js",
+  "main": "src/index.js",
   "dependencies": {
     "express": "^4.16.3"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon /src/app.js localhost 5000"
+    "start": "nodemon src/index.js localhost 5000"
   },
   "repository": {
     "type": "git",
