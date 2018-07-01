@@ -1,18 +1,14 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+var express = require('express');
+var app = express();
+var path = require('path');
 
-app.get('/', (request, response) => {
-  response.send('Hello from Express!');
-})
+app.use('/', express.static('public'));
+// viewed at http://localhost:8080
+// app.get('/', function(req, res) {
+// 	alert(path.basename(path.dirname('index.html')));
+//     res.sendFile(path('/index.html'));
+// });
 
-app.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err);
-  }
-
-  console.log(`server is listening on ${port}`);
-})
 // 'use strict';
 // var express = require('express'),
 //   bodyParser = require('body-parser'),
