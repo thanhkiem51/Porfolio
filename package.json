@@ -10,7 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js localhost 5000"
+    "start": "nodemon src/index.js localhost 8080"
   },
   "repository": {
     "type": "git",

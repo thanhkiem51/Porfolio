@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-
+var port=Number(process.env.PORT || 8080);
 app.use('/', express.static('public'));
 // viewed at http://localhost:8080
 // app.get('/', function(req, res) {
@@ -9,7 +9,7 @@ app.use('/', express.static('public'));
 //     res.sendFile(path('/index.html'));
 // });
 
-app.listen(8080);
+app.listen(port);
 // 'use strict';
 // var express = require('express'),
 //   bodyParser = require('body-parser'),
