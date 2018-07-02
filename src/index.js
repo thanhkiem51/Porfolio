@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var port=Number(process.env.PORT || 8080);
+// var port= process.env.PORT || 8080;
+var port=8080; //for local testing
 app.use('/', express.static('public'));
 // viewed at http://localhost:8080
 // app.get('/', function(req, res) {

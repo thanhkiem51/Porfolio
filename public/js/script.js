@@ -6,7 +6,7 @@ $(document).ready(function() {
 		else
 			x.className = 'nav-bar';
 	})
-	// $('#content').load("http://cors.io/?https://vnexpress.net/");
+	$('#content').load("../templates/home.html");
 });
 
 // var contentApp = angular.module('contentApp', []);
