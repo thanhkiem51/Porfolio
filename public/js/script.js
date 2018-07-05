@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	//responsive manipulator
 	$('.fa-bars').on('click',function () {
 		var x = document.getElementById("nav-bar");
 		if (x.className === 'nav-bar')
@@ -6,16 +7,16 @@ $(document).ready(function() {
 		else
 			x.className = 'nav-bar';
 	})
-	$('#content').load("../templates/home.html");
+	
+
+	// jquery for front page
+	$('#greet').click(function() {
+		var audio = document.getElementById('audio');
+		if (audio.paused) {
+            audio.play();
+        }else{
+            audio.pause();
+            audio.currentTime = 0
+        }
+	})
 });
-
-// var contentApp = angular.module('contentApp', []);
-// contentApp.config(function($routeProvider) {
-// 	routeProvider
-// 	.when("/", {templateUrl: "home.html"})
-// });
-// contentApp.controller('mainController', function($scope) {
-
-// });
-
-

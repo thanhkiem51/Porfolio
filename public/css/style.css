@@ -1,4 +1,4 @@
-/*general*/
+/*general, reusable stuffs*/
 body {
     margin: 0;
 }
@@ -95,13 +95,15 @@ p {
     font-size: 20px;
     width:100px;
     text-align: center;
-    color: white;
+    color: red;
     cursor: pointer;
 }
 
 #burger {
     display:none;
 }
+
+/*content section*/
 
 /*main section*/
 
@@ -113,7 +115,8 @@ p {
     margin: 3vh auto 0 auto;
 }
 
-/*head-section*/
+/*home page*/
+
 .head-line {
     text-align: center;
     padding-top: 10%;
@@ -128,8 +131,8 @@ p {
     color: orange;
     font-size: 30px;
 }
-/*content section*/
 
+/*about page*/
 
 /*media query*/
 @media only screen and (max-width: 768px) {

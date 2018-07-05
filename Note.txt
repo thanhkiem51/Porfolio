@@ -24,3 +24,5 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
 	something
 }
+
+_$location: used to save window.href location
