@@ -111,8 +111,9 @@ p {
 	position: relative;
 	max-width: 90vw;
     min-height: 50vh;
-    /*background:red;*/
-    margin: 3vh auto 0 auto;
+    margin: 10% auto;
+    vertical-align: middle;
+    /*margin: 3vh auto 0 auto;*/
 }
 
 /*home page*/
@@ -133,6 +134,32 @@ p {
 }
 
 /*about page*/
+#about {
+    color:white;
+
+}
+.white-box {
+    border-radius: 15px;
+    border: 3px white solid;
+    padding: 5%;
+}
+.flex-container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.intro {
+    font-size:2em;
+}
+
+.skill span{
+    border: 2px blue solid;
+    border-radius: 10px;
+    padding:1%;
+    margin-right:5px;
+}
 
 /*media query*/
 @media only screen and (max-width: 768px) {
