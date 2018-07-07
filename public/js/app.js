@@ -36,7 +36,7 @@ app.controller('navController', function($scope, $location) {
 	} 
 })
 
-app.controller('aboutController',function($scope) {
+app.controller('homeController',function($scope) {
 
 })
 
