@@ -10,7 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 var port= process.env.PORT || 5000;
 app.use('/', express.static('public'));
-
+app.use(function(req, res) {
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
 
 // app.get('/', function(req, res) {
 // 	alert(path.basename(path.dirname('index.html')));

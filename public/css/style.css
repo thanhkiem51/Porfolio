@@ -110,8 +110,7 @@ p {
 #main {
 	position: relative;
 	max-width: 90vw;
-    min-height: 50vh;
-    margin: 10% auto;
+    margin: 5% auto;
     vertical-align: middle;
     /*margin: 3vh auto 0 auto;*/
 }
@@ -136,30 +135,43 @@ p {
 /*about page*/
 #about {
     color:white;
-
 }
 .white-box {
-    border-radius: 15px;
-    border: 3px white solid;
-    padding: 5%;
+    border-radius: 20px;
+    border: 2px white solid;
+    padding: 3%;
+    margin: 1% 1% 0 0;
 }
-.flex-container {
-    display: flex;
-    width: 80%;
-    margin: auto;
-    flex-wrap: wrap;
-}
-
 .intro {
     font-size:2em;
 }
 
-.skill span{
-    border: 2px blue solid;
-    border-radius: 10px;
-    padding:1%;
-    margin-right:5px;
+.flex-box {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
 }
+.left {
+    flex-grow: 1.6;
+    flex-basis: 60%;
+}
+.right {
+    flex-grow: 1;
+    flex-basis: 25%;
+}
+
+
+.skill span{
+    border: 3px blue solid;
+    border-radius: 10px;
+    padding:18px;
+    margin:10px;
+    cursor:default;
+    font-size:1.5em;
+}
+
+
+
 
 /*media query*/
 @media only screen and (max-width: 768px) {

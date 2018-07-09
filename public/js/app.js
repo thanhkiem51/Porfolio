@@ -4,23 +4,22 @@
 var app = angular.module('contentApp', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
 	$locationProvider.hashPrefix('');
-	$routeProvider
-	//home page route
-	.when('/', {
-		templateUrl: 'templates/home.html',
-		controller: 'homeController'
-	})
-	.when('/about', {
-		templateUrl: 'templates/about.html',
-		controller: 'aboutController'
-	})
-	.when('/projects', {
-		templateUrl: 'templates/projects.html',
-		controller: 'projectsController'
-	})
-	.otherwise({
-		redirectTo: '/'
-	});
+	$routeProvider //routing for each page template
+		.when('/', {
+			templateUrl: 'templates/home.html',
+			controller: 'homeController'
+		})
+		.when('/about', {
+			templateUrl: 'templates/about.html',
+			controller: 'aboutController'
+		})
+		.when('/projects', {
+			templateUrl: 'templates/projects.html',
+			controller: 'projectsController'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
 	$locationProvider.html5Mode(true);
 });
 
@@ -38,6 +37,12 @@ app.controller('navController', function($scope, $location) {
 })
 
 app.controller('homeController',function($scope) {
+
+})
+app.controller('aboutController',function($scope) {
+
+})
+app.controller('projectsController',function($scope) {
 
 })
 
