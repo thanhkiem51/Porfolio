@@ -17,6 +17,15 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'templates/projects.html',
 			controller: 'projectsController'
 		})
+		.when('/delamar', {
+			templateUrl: 'templates/projects/delamar.html',
+		})
+		// .when('/backend', {
+		// 	templateUrl: 'templates/projects/delamar.html',
+		// })
+		// .when('/arrow hail', {
+		// 	templateUrl: 'templates/projects/delamar.html',
+		// })
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -39,11 +48,15 @@ app.controller('navController', function($scope, $location) {
 app.controller('homeController',function($scope) {
 
 })
-app.controller('aboutController',function($scope) {
-
+app.controller('aboutController',function($scope, $location) {
+	$scope.projects = function() {
+		$location.path('/projects');
+	} 
 })
-app.controller('projectsController',function($scope) {
-
+app.controller('projectsController',function($scope, $location) {
+	$scope.pj1 = function() {
+		$location.path('/delamar');
+	} 
 })
 
 })(); //end self-invoke angular
