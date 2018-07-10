@@ -45,8 +45,10 @@ app.controller('navController', function($scope, $location) {
 	} 
 })
 
-app.controller('homeController',function($scope) {
-
+app.controller('homeController',function($scope, $location) {
+	$scope.about = function() {
+		$location.path('/about');
+	} 
 })
 app.controller('aboutController',function($scope, $location) {
 	$scope.projects = function() {
@@ -54,9 +56,7 @@ app.controller('aboutController',function($scope, $location) {
 	} 
 })
 app.controller('projectsController',function($scope, $location) {
-	$scope.pj1 = function() {
-		$location.path('/delamar');
-	} 
+
 })
 
 })(); //end self-invoke angular

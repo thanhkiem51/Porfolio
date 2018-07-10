@@ -1,9 +1,10 @@
 <div ng-controller="homeController">
-	<div class="head-line" >
-		<h1 class="hvr-pulse">Welcome to my basement</h1>
-		<h3>I hope these will satisfy you</h3>
+	<div class="flex-box welcome">
+		<h1 id="line1" class="hvr-pulse">Welcome to my basement</h1>
+		<h3 id="line2" class="hvr-pulse">I hope these will satisfy you</h3>
+		<button id="welcome-button" class="hvr-grow-rotate" ng-click="about()">Allow me to introduce myself</button>
 	</div>
-	<audio id="audio" src="audio/greeting.mp3" type="audio/mpeg">This will show if this browser doesn't support audio</audio>
-	<button id="greet">Hear my greeting</button>
+<!-- 	<audio id="audio" src="audio/greeting.mp3" type="audio/mpeg"></audio>
+	<button id="greet">Hear my greeting</button> -->
 
 </div>
