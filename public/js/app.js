@@ -32,6 +32,7 @@ app.config(function($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 });
 
+//controller for navigation menu, active all the time
 app.controller('navController', function($scope, $location) {
 	// $scope.$location = $location;
 	$scope.home = function() {
@@ -45,6 +46,7 @@ app.controller('navController', function($scope, $location) {
 	} 
 })
 
+// controller for home page
 app.controller('homeController',function($scope, $location) {
 	$scope.about = function() {
 		$location.path('/about');
@@ -66,11 +68,15 @@ app.controller('homeController',function($scope, $location) {
 	})
 
 })
+
+// controller for About page
 app.controller('aboutController',function($scope, $location) {
 	$scope.projects = function() {
 		$location.path('/projects');
 	} 
 })
+
+//controller for projects page
 app.controller('projectsController',function($scope, $location) {
 
 })
