@@ -54,6 +54,17 @@ app.controller('homeController',function($scope, $location) {
 	$('#welcome-button').hide().delay(10000).show(2200);
 	$('#greet').hide().delay(12000).show(2200);
 	$('#welcome-button').hide().delay(8000).show(2200);
+
+	$('#greet').click(function() {
+		var audio = document.getElementById('audio');
+		if (audio.paused) {
+            audio.play();
+        }else{
+            audio.pause();
+            audio.currentTime = 0
+        }
+	})
+
 })
 app.controller('aboutController',function($scope, $location) {
 	$scope.projects = function() {
