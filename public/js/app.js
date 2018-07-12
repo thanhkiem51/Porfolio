@@ -59,15 +59,26 @@ app.controller('homeController',function($scope, $location) {
 	$('#greet').hide().delay(12000).show(2200);
 
 	//greet button
-	$('#greet').click(function() {
-		var audio = document.getElementById('audio');
-		if (audio.paused) {
+
+
+	 $('#main').on('click', '#greet', function() {
+        var audio = document.getElementById('audio');
+        if (audio.paused) {
             audio.play();
         }else{
             audio.pause();
             audio.currentTime = 0;
         }
-	});
+    });
+	// $('#greet').click(function() {
+	// 	var audio = document.getElementById('audio');
+	// 	if (audio.paused) {
+ //            audio.play();
+ //        }else{
+ //            audio.pause();
+ //            audio.currentTime = 0;
+ //        }
+	// });
 
 });
 
