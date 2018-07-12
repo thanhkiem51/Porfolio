@@ -56,20 +56,10 @@ app.controller('homeController',function($scope, $location) {
 	$('#line1').hide().delay(3000).show(2200);
 	$('#line2').hide().delay(5000).show(2200);
 	$('#welcome-button').hide().delay(10000).show(2200);
-	$('#greet').hide().delay(12000).show(2200);
+	// $('#greet').hide().delay(12000).show(2200);
 
 	//greet button
 
-
-	 $('#main').on('click', '#greet', function() {
-        var audio = document.getElementById('audio');
-        if (audio.paused) {
-            audio.play();
-        }else{
-            audio.pause();
-            audio.currentTime = 0;
-        }
-    });
 	// $('#greet').click(function() {
 	// 	var audio = document.getElementById('audio');
 	// 	if (audio.paused) {
@@ -81,6 +71,8 @@ app.controller('homeController',function($scope, $location) {
 	// });
 
 });
+
+
 
 // controller for About page
 app.controller('aboutController',function($scope, $location) {
