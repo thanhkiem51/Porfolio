@@ -37,26 +37,28 @@ app.controller('navController', function($scope, $location) {
 	// $scope.$location = $location;
 	$scope.home = function() {
 		$location.path('/home');
-	} 
+	}; 
 	$scope.about = function() {
 		$location.path('/about');
-	} 
+	}; 
 	$scope.projects = function() {
 		$location.path('/projects');
-	} 
-})
+	}; 
+});
 
 // controller for home page
 app.controller('homeController',function($scope, $location) {
 	$scope.about = function() {
 		$location.path('/about');
-	} 
+	};
+
+	//animation 
 	$('#line1').hide().delay(3000).show(2200);
 	$('#line2').hide().delay(5000).show(2200);
 	$('#welcome-button').hide().delay(10000).show(2200);
 	$('#greet').hide().delay(12000).show(2200);
-	$('#welcome-button').hide().delay(8000).show(2200);
 
+	//greet button
 	$('#greet').click(function() {
 		var audio = document.getElementById('audio');
 		if (audio.paused) {
@@ -67,18 +69,18 @@ app.controller('homeController',function($scope, $location) {
         }
 	});
 
-})
+});
 
 // controller for About page
 app.controller('aboutController',function($scope, $location) {
 	$scope.projects = function() {
 		$location.path('/projects');
 	} 
-})
+});
 
 //controller for projects page
 app.controller('projectsController',function($scope, $location) {
 
-})
+});
 
 })(); //end self-invoke angular

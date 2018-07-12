@@ -10,7 +10,7 @@ $(document).ready(function() {
 			x.className += ' responsive';
 		else
 			x.className = 'nav-bar';
-	})
+	});
 	
 
 
