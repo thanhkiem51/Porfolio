@@ -2,6 +2,23 @@
 
 'use strict';
 var app = angular.module('contentApp', ['ngRoute']);
+
+$(document).ready(function() {
+	$('#line1').hide().delay(3000).show(2200);
+	$('#line2').hide().delay(5000).show(2200);
+	$('#welcome-button').hide().delay(10000).show(2200);
+	$('#greet').hide().delay(12000).show(2200);
+	
+	$('#greet').click(function() {
+		var audio = document.getElementById('audio');
+		if (audio.paused) {
+            audio.play();
+        }else{
+            audio.pause();
+            audio.currentTime = 0
+        }
+	})
+});
 app.config(function($routeProvider, $locationProvider) {
 	$locationProvider.hashPrefix('');
 	$routeProvider //routing for each page template
