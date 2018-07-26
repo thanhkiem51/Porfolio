@@ -142,6 +142,9 @@ p {
     font-size: 1.3em;
     cursor: pointer;
 }
+#greet {
+    margin-top:15px;
+}
 
 /*about page*/
 #about {
