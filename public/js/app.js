@@ -1,6 +1,7 @@
 (function(){
 
 'use strict';
+
 var app = angular.module('contentApp', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
 	$locationProvider.hashPrefix('');
@@ -23,9 +24,7 @@ app.config(function($routeProvider, $locationProvider) {
 		// .when('/backend', {
 		// 	templateUrl: 'templates/projects/delamar.html',
 		// })
-		// .when('/arrow hail', {
-		// 	templateUrl: 'templates/projects/delamar.html',
-		// })
+
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -53,23 +52,10 @@ app.controller('homeController',function($scope, $location) {
 	};
 
 	//animation 
-	$('#line1').hide().delay(3000).show(2200);
-	$('#line2').hide().delay(5000).show(2200);
-	$('#welcome-button').hide().delay(10000).show(2200);
-	// $('#greet').hide().delay(12000).show(2200);
-
-	//greet button
-
-	// $('#greet').click(function() {
-	// 	var audio = document.getElementById('audio');
-	// 	if (audio.paused) {
- //            audio.play();
- //        }else{
- //            audio.pause();
- //            audio.currentTime = 0;
- //        }
-	// });
-
+	$('#line1').hide().delay(2000).show(2200);
+	$('#line2').hide().delay(4000).show(2200);
+	$('#welcome-button').hide().delay(7000).show(2200);
+	$('#greet').hide().delay(10000).show(2200);
 });
 
 
