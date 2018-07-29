@@ -2,10 +2,11 @@
   "name": "porfolio",
   "version": "1.0.0",
   "description": "Nam Nguyen Porfolio",
-  "homepage": "https://namwin.herokuapp.com/",
+  "homepage": "https://github.com/thanhkiem51/Porfolio#readme",
   "main": "src/index.js",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mysql": "^2.16.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -24,6 +25,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/thanhkiem51/Porfolio/issues"
-  },
-  "homepage": "https://github.com/thanhkiem51/Porfolio#readme"
+  }
 }

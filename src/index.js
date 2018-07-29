@@ -3,20 +3,45 @@
 'use strict';
 var express = require('express'),
 	bodyParser = require('body-parser'),
-	app = express(),
-	path = require('path');
+	path = require('path'),
+	mysql = require('mysql');
+//init the app by serving index file
+var	app = express();
+var port= process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-var port= process.env.PORT || 5000;
+
 app.use('/', express.static('public'));
 app.use(function(req, res) {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-// app.get('/', function(req, res) {
-// 	alert(path.basename(path.dirname('index.html')));
-//     res.sendFile(path('/index.html'));
+// var mapProject = require('./map-project');
+// app.use('/mapProject',mapProject); 
+app.get('/endpoint', function(req,res) {
+	res.send({"hey":"there"});
+})
+//start the server
+app.listen(port);
+
+// var db= require('./db.js');
+// db();
+
+// var mysql = require('mysql');
+// var con = mysql.createConnection({
+// 	  host: "den1.mysql2.gear.host",
+// 	  user: "namwinmysql",
+// 	  password: "Pro1995!"
+// 	});
+
+
+// con.connect(function(err) {
+// 	if (err) throw err;
+// 	console.log("Connected!");
 // });
 
-app.listen(port);
+// app.use('/mapdb',function(req,res) {
+// 	res.send("hey");
+// });
+// require('./db')(app);

@@ -1,7 +1,7 @@
 (function(){
-
 'use strict';
 
+//Set up templates and angular controllers for each route
 var app = angular.module('contentApp', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
 	$locationProvider.hashPrefix('');
@@ -18,8 +18,9 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'templates/projects.html',
 			controller: 'projectsController'
 		})
-		.when('/delamar', {
-			templateUrl: 'templates/projects/delamar.html',
+		.when('/projects/mapProject', {
+			templateUrl: 'templates/projects/map.html',
+			controller: 'mapProjectController'
 		})
 		// .when('/backend', {
 		// 	templateUrl: 'templates/projects/delamar.html',
@@ -50,8 +51,7 @@ app.controller('homeController',function($scope, $location) {
 	$scope.about = function() {
 		$location.path('/about');
 	};
-
-	//animation 
+	//delay animation for welcome elements
 	$('#line1').hide().delay(2000).show(2200);
 	$('#line2').hide().delay(4000).show(2200);
 	$('#welcome-button').hide().delay(7000).show(2200);
@@ -69,6 +69,27 @@ app.controller('aboutController',function($scope, $location) {
 
 //controller for projects page
 app.controller('projectsController',function($scope, $location) {
+	$scope.map = function() {
+		$location.path('/projects/mapProject');
+	} 
+
+});
+
+app.controller('mapProjectController',function($scope) {
+
+	// $('#test').on('click',function(e) {
+	// 	var url = "http://localhost:5000/endpoint";
+	// 	$.ajax({
+	// 		url: url,
+	// 		type: "GET",
+	// 		success: function (result) {
+	// 			console.log(result);
+	// 		},
+	// 		error: function(result) {
+	// 			console.log(result);
+	// 		}
+	// 	})
+	// })
 
 });
 
