@@ -13,14 +13,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/', express.static('public'));
+
 app.use(function(req, res) {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
+
+
 // var mapProject = require('./map-project');
 // app.use('/mapProject',mapProject); 
 app.get('/endpoint', function(req,res) {
-	res.send({"hey":"there"});
+	console.log("something happen");
+	res.send("what");
 })
 //start the server
 app.listen(port);

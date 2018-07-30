@@ -4,7 +4,7 @@
 //Set up templates and angular controllers for each route
 var app = angular.module('contentApp', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
-	$locationProvider.hashPrefix('');
+	// $locationProvider.hashPrefix('');
 	$routeProvider //routing for each page template
 		.when('/', {
 			templateUrl: 'templates/home.html',
@@ -22,10 +22,6 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'templates/projects/map.html',
 			controller: 'mapProjectController'
 		})
-		// .when('/backend', {
-		// 	templateUrl: 'templates/projects/delamar.html',
-		// })
-
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -56,6 +52,32 @@ app.controller('homeController',function($scope, $location) {
 	$('#line2').hide().delay(4000).show(2200);
 	$('#welcome-button').hide().delay(7000).show(2200);
 	$('#greet').hide().delay(10000).show(2200);
+
+	//play audio button
+	$('#greet').on('click', function(e) {
+		var audio = document.getElementById('audio');
+		if (audio.paused) {
+	           audio.play();
+	       }else{
+	           audio.pause();
+	           audio.currentTime = 0;
+	       }
+	})
+
+
+	$('#test').on('click',function(e) {
+	    $.ajax({
+	        url: "/endpoint",
+	        type: "GET",
+	        success: function (result) {
+	            console.log(result);
+	        },
+	        error: function(result) {
+	            console.log(result);
+	        }
+	    })
+	})
+	
 });
 
 
