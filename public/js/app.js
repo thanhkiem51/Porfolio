@@ -54,7 +54,7 @@ app.controller('homeController',function($scope, $location) {
 	$('#greet').hide().delay(10000).show(2200);
 
 	//play audio button
-	$('#greet').on('click', function(e) {
+	$('#greet').on('click', ()=> {
 		var audio = document.getElementById('audio');
 		if (audio.paused) {
 	           audio.play();
@@ -62,22 +62,7 @@ app.controller('homeController',function($scope, $location) {
 	           audio.pause();
 	           audio.currentTime = 0;
 	       }
-	})
-
-
-	$('#test').on('click',function(e) {
-	    $.ajax({
-	        url: "/endpoint",
-	        type: "GET",
-	        success: function (result) {
-	            console.log(result);
-	        },
-	        error: function(result) {
-	            console.log(result);
-	        }
-	    })
-	})
-	
+	})	
 });
 
 
@@ -100,17 +85,16 @@ app.controller('projectsController',function($scope, $location) {
 app.controller('mapProjectController',function($scope) {
 
 	// $('#test').on('click',function(e) {
-	// 	var url = "http://localhost:5000/endpoint";
-	// 	$.ajax({
-	// 		url: url,
-	// 		type: "GET",
-	// 		success: function (result) {
-	// 			console.log(result);
-	// 		},
-	// 		error: function(result) {
-	// 			console.log(result);
-	// 		}
-	// 	})
+	//     $.ajax({
+	//         url: "/mapProject/endpoint",
+	//         type: "GET",
+	//         success: function (result) {
+	//             console.log(result);
+	//         },
+	//         error: function(result) {
+	//             console.log(result);
+	//         }
+	//     })
 	// })
 
 });

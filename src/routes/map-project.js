@@ -1,6 +1,15 @@
 'use strict';
 
+const mysql = require('mysql'),
+	  express = require('express');
+const app = express();
 
+app.get('/endpoint',(req,res) => {
+	console.log("something happen");
+	res.send("what");
+})
+
+module.exports = app;
 
 
 // module.exports = router;
