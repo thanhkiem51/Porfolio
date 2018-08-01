@@ -202,6 +202,13 @@ p {
 #button-zone h3{
     font-family: 'Playfair Display SC', serif;
 }
+
+#contact {
+    width:100%;
+}
+.phone, .email {
+    font-size: 1.4em;
+}
 /*project page*/
 #projects {
     color:white;

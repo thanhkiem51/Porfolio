@@ -1,15 +1,3 @@
-$(document).ready(function() {
-	//responsive manipulator
-	$('.fa-bars').on('click',function () {
-		var x = document.getElementById("nav-bar");
-		if (x.className === 'nav-bar')
-			x.className += ' responsive';
-		else
-			x.className = 'nav-bar';
-	});
-});
-
-
 /* Get color code for states*/
 function setColor(records) {
 	for (let i=0;i<records.length;i++) {
@@ -61,6 +49,9 @@ function loadColorData(map) {
 }
 
 function styleFeature(feature) {
+
+
+  // delta represents where the value sits between the min and max
   var color = feature.getProperty('color');
 
   var outlineWeight = 2, zIndex = 1;
@@ -98,18 +89,14 @@ function initMap() {
 		styles: mapStyle,
 		disableDefaultUI: true
 	};
-
 	var map = new google.maps.Map(document.getElementById('map'), mapOption);
-	map.data.setStyle(styleFeature);
+
+  	map.data.setStyle(styleFeature);
 	// map.data.addListener('mouseover', mouseInToRegion);
 	// map.data.addListener('mouseout', mouseOutOfRegion);
 
 	loadMapShapes(map);
 	loadColorData(map);
-
-
 }
 
-
-//
-
+google.maps.event.addDomListener(window, "load", initMap);
