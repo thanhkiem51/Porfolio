@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use('/mapProject', require('./routes/map-project.js'));
 
 
+
 //serving static files in public folder + ensuring all CSS and JS are loaded
 app.use('/', express.static('public'));
 

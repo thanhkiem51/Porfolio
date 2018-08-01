@@ -2,9 +2,9 @@
 'use strict';
 
 //Set up templates and angular controllers for each route
-var app = angular.module('contentApp', ['ngRoute']);
+var app = angular.module('app', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
-	// $locationProvider.hashPrefix('');
+	$locationProvider.hashPrefix('');
 	$routeProvider //routing for each page template
 		.when('/', {
 			templateUrl: 'templates/home.html',
@@ -50,8 +50,8 @@ app.controller('homeController',function($scope, $location) {
 	//delay animation for welcome elements
 	$('#line1').hide().delay(2000).show(2200);
 	$('#line2').hide().delay(4000).show(2200);
-	$('#welcome-button').hide().delay(7000).show(2200);
-	$('#greet').hide().delay(10000).show(2200);
+	$('#greet').hide().delay(7000).show(2200);
+	$('#welcome-button').hide().delay(10000).show(2200);
 
 	//play audio button
 	$('#greet').on('click', ()=> {
@@ -76,25 +76,29 @@ app.controller('aboutController',function($scope, $location) {
 
 //controller for projects page
 app.controller('projectsController',function($scope, $location) {
-	$scope.map = function() {
+	$scope.mapProject = function() {
 		$location.path('/projects/mapProject');
 	} 
 
 });
 
+//controller for map project (Google Map)
 app.controller('mapProjectController',function($scope) {
 
 	// $('#test').on('click',function(e) {
 	//     $.ajax({
-	//         url: "/mapProject/endpoint",
+	//         url: "/mapProject/fetch",
 	//         type: "GET",
+	//         data: {'value':'stateCode'},
 	//         success: function (result) {
-	//             console.log(result);
+	//         	for (let i=0;i<result.length;i++) {
+	//         		console.log(result[i]['stateID']);
+	//         	}
 	//         },
 	//         error: function(result) {
 	//             console.log(result);
 	//         }
-	//     })
+ //    	})
 	// })
 
 });
