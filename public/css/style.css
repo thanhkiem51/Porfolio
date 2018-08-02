@@ -229,19 +229,13 @@ p {
 /*mapProject page*/
 
 .view {
-    height: 600px;
+/*    height: 600px;
     width:48.5%;
     min-width:800px;
-    background: rgba(255, 124, 30,0.4);
     margin-top:30px;
-    margin-bottom:30px;
-    overflow: auto;
-
+    margin-bottom:30px;*/
 }
 
-.view:nth-child(odd) {
-    margin-right:2%;
-}
  #map {
     width:100%;
     height:100%;
