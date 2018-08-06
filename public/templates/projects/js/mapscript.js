@@ -79,8 +79,7 @@ function initMap() {
 		styles: mapStyle,
 		disableDefaultUI: true
 	};
-	$(window).on('load', function () {
-			var map = new google.maps.Map(document.getElementById('map'), mapOption);
+	var map = new google.maps.Map(document.getElementById('map'), mapOption);
 
   	map.data.setStyle(styleFeature);
 	// map.data.addListener('mouseover', mouseInToRegion);
@@ -88,8 +87,6 @@ function initMap() {
 
 	loadMapShapes(map);
   	setTimeout( function() { loadColorData();},1000);
-	})
-
 }
 
-// google.maps.event.addDomListener(window, "load", initMap);
+google.maps.event.addDomListener(window, "load", initMap);
