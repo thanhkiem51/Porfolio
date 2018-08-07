@@ -1,0 +1,54 @@
+<div id="add-food-section" class="white-box">
+	<form id="add-food-form" class="flex-box">
+		<div><span class='required'>Item:</span>
+			<input ng-model="item" placeholder="e.g: Cheese Burger"></input>
+		</div>
+		<div><span class='required'>Calories:</span>
+			<input ng-model="calories" placeholder="e.g: 300"></input>
+		</div>
+		<div><span class='required'>Type:</span>
+			<select ng-model="type" ng-init="type='entrée'">
+				<option value='entrée'>Entrée</option>
+				<option value='side'>Side</option>
+				<option value='drink'>Drink</option>
+				<option value='dessert'>Dessert</option>
+			</select>
+		</div>
+		<div><span>Name:</span>
+			<input ng-model="contributor" placeholder="Your name"></input>
+		</div>
+	</form>
+	<button id="add-food-button" ng-click="addItem(item,calories,type,contributor)">Add item to menu!</button>
+</div>
+
+<div id="contributors" class="white-box">
+	<span>Menu Contributors</span>
+	<div ng-repeat='contributor in contributorList'>
+		<div>{{contributor.name}}</div>
+	</div>
+</div>
+
+
+<div id="menu" class="flex-box">
+	<div id="entrée" class="white-box"><span>Entrée</span>
+		<div ng-repeat='item in menu | filter:isEntree'>
+			<div>{{item.name}} <small>({{item.calories}} calories)</small></div>
+		</div>
+	</div>
+	<div id="sides" class="white-box"><span>Sides</span>
+		<div ng-repeat='item in menu | filter:isSide'>
+			<div>{{item.name}} <small>({{item.calories}} calories)</small></div>
+		</div>
+	</div>
+	<div id="drinks" class="white-box"><span>Drinks</span>
+		<div ng-repeat='item in menu | filter:isDrink'>
+			<div>{{item.name}} <small>({{item.calories}} calories)</small></div>
+		</div>
+	</div>
+	<div id="desserts" class="white-box"><span>Desserts</span>
+		<div ng-repeat='item in menu | filter:isDessert' >
+			<div>{{item.name}} <small>({{item.calories}} calories)</small></div>
+		</div>
+	</div>
+</div>
+

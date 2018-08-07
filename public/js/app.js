@@ -18,9 +18,13 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'templates/projects.html',
 			controller: 'projectsController'
 		})
-		.when('/projects/mapProject', {
-			templateUrl: 'templates/projects/map.html',
-			controller: 'mapProjectController'
+		// .when('/projects/mapProject', {
+		// 	templateUrl: 'templates/projects/map.html',
+		// 	controller: 'mapProjectController'
+		// })
+		.when('/projects/foodMenu', {
+			templateUrl: 'templates/projects/food_menu.html',
+			controller: 'foodMenuController'
 		})
 		.otherwise({
 			redirectTo: '/'
@@ -54,7 +58,7 @@ app.controller('homeController',function($scope, $location) {
 	$('#welcome-button').hide().delay(10000).show(2200);
 
 	//play audio button
-	$('#greet').on('click', ()=> {
+	$scope.greet = function() {
 		var audio = document.getElementById('audio');
 		if (audio.paused) {
 	           audio.play();
@@ -62,7 +66,7 @@ app.controller('homeController',function($scope, $location) {
 	           audio.pause();
 	           audio.currentTime = 0;
 	       }
-	})	
+	};
 });
 
 
@@ -76,30 +80,98 @@ app.controller('aboutController',function($scope, $location) {
 
 //controller for projects page
 app.controller('projectsController',function($scope, $location) {
-	$scope.mapProject = function() {
-		$location.path('/projects/mapProject');
+	// $scope.mapProject = function() {
+	// 	$location.path('/projects/mapProject');
+	// } 
+	$scope.foodMenu = function() {
+		$location.path('/projects/foodMenu');
 	} 
 
 });
 
-//controller for map project (Google Map)
-app.controller('mapProjectController',function($scope) {
+//controller for food menu
+app.controller('foodMenuController',function($scope,$http) {
+	// filtering menu to print them out in separated section
+	$scope.isEntree = function(menu) {
+		return menu.type == 'entrée';
+	};
+	$scope.isSide = function(menu) {
+		return menu.type == 'side';
+	};
+	$scope.isDrink = function(menu) {
+		return menu.type == 'drink';
+	};
+	$scope.isDessert = function(menu) {
+		return menu.type == 'dessert';
+	};
 
-	// $('#test').on('click',function(e) {
-	//     $.ajax({
-	//         url: "/mapProject/fetch",
-	//         type: "GET",
-	//         data: {'value':'stateCode'},
-	//         success: function (result) {
-	//         	for (let i=0;i<result.length;i++) {
-	//         		console.log(result[i]['stateID']);
-	//         	}
-	//         },
-	//         error: function(result) {
-	//             console.log(result);
-	//         }
- //    	})
-	// })
+	//function used to show/update the menu
+	function showMenu() {
+		$http({
+			method: 'GET',
+			url:'/menuProject/getMenu'
+		}).then( function success(res) {
+			$scope.menu = res.data;
+		}, function error(res) {
+			console.log(res);
+		});
+	}
+	function showContributors() {
+		$http({
+			method: 'GET',
+			url:'/menuProject/getContributors'
+		}).then( function success(res) {
+			$scope.contributorList = res.data;
+		}, function error(res) {
+			console.log(res);
+		});
+	}
+	// add item to menu
+	$scope.addItem = function(item,calories,type,contributor) {
+
+		if (item==null) {
+			alert('Item name is required');
+			return;
+		}
+		if (calories==null || isNaN(calories)) {
+			alert('Calories count must be a number');
+			return;
+		}
+		$http({
+			method: 'POST',
+			url:'/menuProject/addFood',
+			data: {
+				item: item,
+				calories: calories,
+				type: type
+			}
+		}).then( function success(res) {
+			console.log(res);
+			showMenu();
+		}, function error(res) {
+			console.log(res);
+		});
+
+		if (contributor!=null) {
+			$http({
+				method: 'POST',
+				url:'/menuProject/addContributor',
+				data: {
+					contributor: contributor
+				}
+			}).then( function success(res) {
+				console.log(res);
+				showContributors();
+			}, function error(res) {
+				console.log(res);
+			});
+		}
+	}
+
+	// get menu and print out the content when the page is loaded
+	showMenu();
+	showContributors();
+
 
 });
 
