@@ -1,8 +1,8 @@
 {
-  "name": "porfolio",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "Nam Nguyen Porfolio",
-  "homepage": "https://github.com/thanhkiem51/Porfolio#readme",
+  "description": "Nam Nguyen Portfolio",
+  "homepage": "https://github.com/thanhkiem51/Portfolio#readme",
   "main": "src/index.js",
   "dependencies": {
     "express": "^4.16.3",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thanhkiem51/Porfolio.git"
+    "url": "git+https://github.com/thanhkiem51/Portfolio.git"
   },
   "keywords": [
     "Nam",
-    "porfolio"
+    "portfolio"
   ],
   "author": "Nam Nguyen <nguyenbrother9x@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thanhkiem51/Porfolio/issues"
+    "url": "https://github.com/thanhkiem51/Portfolio/issues"
   }
 }
