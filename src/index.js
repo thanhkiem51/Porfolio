@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 //set up end points for map project
 app.use('/mapProject', require('./routes/map-project.js'));
 app.use('/menuProject',require('./routes/menu-project.js'));
-app.use('/mangaBrowser',require('./routes/manga-project.js');
+app.use('/mangaBrowser',require('./routes/manga-project.js'));
 
 //serving static files in public folder + ensuring all CSS and JS are loaded
 app.use('/', express.static('public'));
