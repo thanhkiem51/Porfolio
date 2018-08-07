@@ -12,12 +12,6 @@ var connection = mysql.createConnection({
 	database: "namwinmysql"
 });
 
-//connect to GearHost
-// connection.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected to GearHost!");
-// });
-
 //Handling request to get table details
 app.get('/fetch',function(req,res) {
 	connection.query('SELECT stateID,a.state,ready,busy,threshold1,threshold2,threshold3 '+
