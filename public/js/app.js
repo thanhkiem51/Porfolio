@@ -26,6 +26,10 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'templates/projects/food_menu.html',
 			controller: 'foodMenuController'
 		})
+		.when('/projects/mangaBrowser/:name/:chapter', {
+			templateUrl: 'templates/projects/manga_browser.html',
+			controller: 'mangaBrowserController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -266,8 +270,11 @@ app.controller('foodMenuController',function($scope,$http) {
 	// get menu and print out the content when the page is loaded
 	showMenu();
 	showContributors();
+});
 
+app.controller('mangaBrowserController', function($scope) {
 
 });
+
 
 })(); //end self-invoke angular
