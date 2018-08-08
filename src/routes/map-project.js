@@ -14,23 +14,30 @@ var connection = mysql.createConnection({
 
 //Handling request to get table details
 app.get('/fetch',function(req,res) {
-	connection.query('SELECT stateID,a.state,ready,busy,threshold1,threshold2,threshold3 '+
+	connection.query('SELECT stateID,a.state,ready,busy,threshold1,threshold2,threshold3, lat, `long`'+
 					'FROM statestaffinglevel a JOIN statedetail b '+
-					'ON a.state=b.state',
+					'ON a.state=b.state WHERE b.stateID!=0',
 		function (err,result) {
-			if (err) throw err;
+			if (err) res.send(err);
 			res.send(result);
 		})
-
-
 });
 
-//Handling request to update table records
+
+//update staffing in state table
 app.post('/update',function(req,res) {
-	var value = req.query['value'];
+	let value = req.body['option'];
+	let sql = "CALL ";
+	if (value=='origin')
+		sql+="restore_origin();";
+	else if (value=='update1')
+		sql+="update_1();";
+	else if (value=='update2')
+		sql+="update_2();";
+	connection.query(sql,
+	function (err,result) {
+		if (err) throw err;
+		res.send(result);
+	})
 })
-// app.get('/update',(req,res) => {
-// 	console.log("something happen");
-// 	res.send("what");
-// })
 module.exports = app;

@@ -12,23 +12,27 @@
 	<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Playfair+Display+SC" rel="stylesheet">
 
 	<!-- external frameworks + independence library-->
+
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-
 	<!-- Google map API -->
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJyt2hzPtoY8DcZ0oXsskOkr2oHpdGVh0"></script> -->
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
 
 	<!-- internal library + dependence library-->
+
+	<!-- style -->
 	<link rel="stylesheet" href="css/external-library.css">
 	<link rel="stylesheet" href="css/style.css">
+	<!-- script -->
 	<script src="js/script.js"></script>
 	<script src="js/app.js"></script>
-	
+	<script src="js/js-map-label.js"></script>
 
 </head>
 <body ng-app="app" ng-controller="navController">
-	<div class="background-slideshow"> <!-- Background animation -->
+	<!-- Background animation -->
+	<div class="background-slideshow"> 
 		<ul><li></li><li></li><li></li><li></li></ul>
 	</div>
 	<div id="nav-bar" class="nav-bar">

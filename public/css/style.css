@@ -224,14 +224,22 @@ p {
 .center {
     justify-content: center;
 }
+.description {
+    font-size: 1.3em;
+}
 
 /*mapProject page*/
+#data {
+    position:relative;
+    left:30%;
+    width:350px;
+    height: 30px;
+}
 
 #map {
+    margin:30px auto;
     width:80vw;
-    min-width:800px;
-    height:80vh;
-    min-height:600px;
+    height:75vh;
 }   
 
  /*Food Menu*/

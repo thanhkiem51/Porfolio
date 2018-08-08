@@ -5,7 +5,8 @@
 var app = angular.module('app', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
 	$locationProvider.hashPrefix('');
-	$routeProvider //routing for each page template
+	//routing for each page template
+	$routeProvider 
 		.when('/', {
 			templateUrl: 'templates/home.html',
 			controller: 'homeController'
@@ -26,6 +27,10 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'templates/projects/food_menu.html',
 			controller: 'foodMenuController'
 		})
+		.when('/projects/mangaBrowser/mangaList', {
+			templateUrl: 'templates/projects/manga_list.html',
+			controller: 'mangaListController'
+		})
 		.when('/projects/mangaBrowser/:name/:chapter', {
 			templateUrl: 'templates/projects/manga_browser.html',
 			controller: 'mangaBrowserController'
@@ -35,6 +40,8 @@ app.config(function($routeProvider, $locationProvider) {
 		});
 	$locationProvider.html5Mode(true);
 });
+
+/*You can just jump to controller for certain templates by looking up controller name above*/ 
 
 //controller for navigation menu, active all the time
 app.controller('navController', function($scope, $location) {
@@ -94,6 +101,8 @@ app.controller('projectsController',function($scope, $location) {
 
 //controller for Google map visualization page
 app.controller('mapDataController',function($scope) {
+	var map;
+	var labels = [];
 		/* Get color code for states*/
 	function setColor(records) {
 		for (let i=0;i<records.length;i++) {
@@ -109,25 +118,55 @@ app.controller('mapDataController',function($scope) {
 		return records;
 	}
 
-	function loadMapShapes(map) {
+	function loadMapShapes() {
 		// load US state outline polygons from a GeoJson file
 	  	map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/states.js', { idPropertyName: 'STATE' });
+		google.maps.event.addListenerOnce(map.data, 'addfeature', function() {
+			google.maps.event.trigger(document.getElementById('data'),'change');
+		});
 	}
 
-	function loadColorData(map) {
+	function changeStaff(value) {
+		$.ajax({
+	        url: "/mapProject/update",
+	        type: "POST",
+	        data: { option : value },
+	        complete: function (result) {
+	        	// console.log(result);
+	        },
+	        error: function(result) {
+	            console.log(result);
+	        }
+		})
+	}
+
+	function clearColorAndLabel() {
+		map.data.forEach(function(row) {
+	    	row.setProperty('color', undefined);
+	  	});
+	  	for (var i = 0; i < labels.length; i++) {
+	    	labels[i].setMap(null);
+	  	}
+	  	labels=[];
+	}
+	function loadColorAndLabel() {
 		$.ajax({
 	        url: "/mapProject/fetch",
 	        type: "GET",
 	        complete: function (result) {
 	        	var records= setColor(result.responseJSON);
-
+	        	var mapLabel;
 	            for (let i=0;i<records.length;i++) {
-					if (records[i].stateID!=0) { //if the place is not on the map
-						map.data
-							.getFeatureById(records[i].stateID)
-							.setProperty('color', records[i].color);
-						// console.log(map.data.getFeatureById(records[i].stateID));
-					}
+					map.data
+						.getFeatureById(records[i].stateID)
+						.setProperty('color', records[i].color);
+					mapLabel= new MapLabel({
+				        text: records[i].state + '(' +records[i].ready+')',
+				        position: new google.maps.LatLng(records[i].lat, records[i].long),
+				        map: map,
+				        fontSize: 12
+				    });
+				    labels.push(mapLabel);
 				}
 	        },
 	        error: function(result) {
@@ -138,24 +177,25 @@ app.controller('mapDataController',function($scope) {
 
 	function styleFeature(feature) {
 	  // delta represents where the value sits between the min and max
-	  var color = feature.getProperty('color');
+		var color = feature.getProperty('color');
 
-	  var outlineWeight = 2, zIndex = 1;
-	  if (feature.getProperty('state') === 'hover') {
-	    outlineWeight = zIndex = 2;
-	  }
+	var outlineWeight = 2, zIndex = 1;
+		if (feature.getProperty('state') === 'hover') {
+		outlineWeight = zIndex = 2;
+	}
 
-	  return {
-	    strokeWeight: outlineWeight,
-	    strokeColor: 'black',
-	    zIndex: zIndex,
-	    fillColor: color,
-	    fillOpacity: 0.75,
-	  };
+	return {
+		strokeWeight: outlineWeight,
+		strokeColor: 'black',
+		zIndex: zIndex,
+		fillColor: color,
+		fillOpacity: 0.75,
+		};
 	}
 
 
 	function initMap() {
+		//disable indicators on map for customized labels
 		var mapStyle = [{
 		  'stylers': [{'visibility': 'off'}]
 		}, {
@@ -167,24 +207,30 @@ app.controller('mapDataController',function($scope) {
 		  'elementType': 'geometry',
 		  'stylers': [{'visibility': 'on'}, {'color': '#bfd4ff'}]
 		}];
+		//preset zoom option and default view to US
 		var mapOption = {
 			center: {lat: 40, lng: -100},
-			minZoom:4,
-			zoom: 4,
-			maxZoom: 5,
+			minZoom:5,
+			zoom: 5,
+			maxZoom: 6,
 			styles: mapStyle,
+			// types: ['(regions)'],
 			disableDefaultUI: true
 		};
-		var map = new google.maps.Map(document.getElementById('map'), mapOption);
 
-	  	map.data.setStyle(styleFeature);
-		// map.data.addListener('mouseover', mouseInToRegion);
-		// map.data.addListener('mouseout', mouseOutOfRegion);
+		map = new google.maps.Map(document.getElementById('map'), mapOption);
+		map.data.setStyle(styleFeature);
+		var selectBox = document.getElementById('data');
 
-		loadMapShapes(map);
-	  	// setTimeout( function() { loadColorData();},1000);
+		loadMapShapes();
+		  // setTimeout( function() { loadColorData();},1000);
+		google.maps.event.addDomListener(selectBox, 'change', function() {
+			changeStaff(selectBox.options[selectBox.selectedIndex].value);
+			clearColorAndLabel();
+			loadColorAndLabel();
+		});		
 	}
-	google.maps.event.addDomListener(window, 'load', initMap);
+	initMap();
 });
 
 
@@ -215,6 +261,8 @@ app.controller('foodMenuController',function($scope,$http) {
 			console.log(res);
 		});
 	}
+
+	//function used to show/update the menu contributors list
 	function showContributors() {
 		$http({
 			method: 'GET',
@@ -225,6 +273,7 @@ app.controller('foodMenuController',function($scope,$http) {
 			console.log(res);
 		});
 	}
+
 	// add item to menu
 	$scope.addItem = function(item,calories,type,contributor) {
 
@@ -251,6 +300,7 @@ app.controller('foodMenuController',function($scope,$http) {
 			console.log(res);
 		});
 
+		//if user put it their name, add their name to contributor lists
 		if (contributor!=null) {
 			$http({
 				method: 'POST',
@@ -267,11 +317,17 @@ app.controller('foodMenuController',function($scope,$http) {
 		}
 	}
 
-	// get menu and print out the content when the page is loaded
+	// get menu and print out the content when the page is loaded for the first time(in this case, when the controller are init)
 	showMenu();
 	showContributors();
 });
 
+// Controller for manga list page
+app.controller('mangaListController', function($scope) {
+
+});
+
+// Controller for manga chapter page
 app.controller('mangaBrowserController', function($scope) {
 
 });
