@@ -19,13 +19,14 @@
 	<!-- Google map API -->
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 
+
 	<!-- internal library + dependence library-->
 
 	<!-- style -->
 	<link rel="stylesheet" href="css/external-library.css">
 	<link rel="stylesheet" href="css/style.css">
+
 	<!-- script -->
-	<script src="js/script.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/js-map-label.js"></script>
 
@@ -33,7 +34,9 @@
 <body ng-app="app" ng-controller="navController">
 	<!-- Background animation -->
 	<div class="background-slideshow"> 
-		<ul><li></li><li></li><li></li><li></li></ul>
+		<ul>
+			<li></li><li></li><li></li><li></li>
+		</ul>
 	</div>
 	<div id="nav-bar" class="nav-bar">
 		<div id="burger">
@@ -42,10 +45,12 @@
 		<span ng-click="home()">Home</span>
 		<span ng-click="about()">About</span>
 		<span ng-click="projects()">Projects</span>
-
 	</div>
-	<div id="main" ng-view></div>  
-		<!-- main content will be loaded and routed here from app.js -->
+
+<!-- main content will be loaded and routed here from app.js -->
+	<div id="main" ng-view>
+		
+	</div>  
 </body>
 </html>
 
