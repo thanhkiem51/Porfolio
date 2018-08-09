@@ -6,10 +6,10 @@ var app = express();
 
 // establish mysql connection to GearHost
 var connection = mysql.createConnection({
-	host: "den1.mysql2.gear.host",
-	user: "namwinmysql",
-	password: "Pro1995!",
-	database: "namwinmysql",
+	host: process.env.MYSQL_HOST,
+	user: process.env.MYSQL_USER,
+	password: process.env.MYSQL_PASSWORD,
+	database: process.env.MYSQL_DATABASE
 });
 
 app.get('/getMenu',function(req,res) {
