@@ -55,6 +55,15 @@ app.controller('navController', function($scope, $location) {
 	$scope.projects = function() {
 		$location.path('/projects');
 	}; 
+	
+	// responsive manipulator
+	$('.fa-bars').on('click',function () {
+		var x = document.getElementById("nav-bar");
+		if (x.className === 'nav-bar')
+			x.className += ' responsive';
+		else
+			x.className = 'nav-bar';
+	});
 });
 
 // controller for home page
