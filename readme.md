@@ -2,4 +2,4 @@ This site is deployed using Nodejs. I use Express and AngularJS to manage routin
 
 Can test locally simply by running node command on index.js file.
 
-*Note to myself: for GET, use req.query, for post use req.body
+*Note to myself: for GET use req.query(path) or req.param(:param), for post use req.body
