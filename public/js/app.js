@@ -27,14 +27,6 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'templates/projects/food_menu.html',
 			controller: 'foodMenuController'
 		})
-		.when('/projects/mangaBrowser/mangaList', {
-			templateUrl: 'templates/projects/manga_list.html',
-			controller: 'mangaListController'
-		})
-		.when('/projects/mangaBrowser/:name/:chapter', {
-			templateUrl: 'templates/projects/manga_browser.html',
-			controller: 'mangaBrowserController'
-		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -331,15 +323,6 @@ app.controller('foodMenuController',function($scope,$http) {
 	showContributors();
 });
 
-// Controller for manga list page
-app.controller('mangaListController', function($scope) {
-
-});
-
-// Controller for manga chapter page
-app.controller('mangaBrowserController', function($scope) {
-
-});
 
 
 })(); //end self-invoke angular
